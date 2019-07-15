@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Starting the game -->
+<section id="showcase">
+    <div class="container text-center col-md-12">
+        <div class="start-game p-5">
+            <div class="overlay p-5">
+                <h1 class="display-4 mb-4">
+                    Enter Player's Names
+                </h1>
+                <p class="lead">Enter the names of the two player and get ready for the game, the winner will be the first to win three games.</p>
+                <div class="setgame">
+                    <form action="{% url 'play' %}">
+                        <!-- Form Row 1 -->
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label class="sr-only">Player 1</label>
+                                <input type="text" name="player1" class="form-control" placeholder="Player 1 (Raquel, Maia, etc)">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label class="sr-only">Player 2</label>
+                                <input type="text" name="player2" class="form-control" placeholder="Player 2 (Andres, Marcela, etc)">
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-block mt-4" type="start">Start</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

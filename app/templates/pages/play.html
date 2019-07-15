@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+        <div class="home-search p-5">
+            <div class="overlay p-5">
+                <h1 class="display-4 mb-4">
+                    Playing {{ players.0 }} ({{ wins1 }}) vs {{ players.1 }} ({{ wins2 }})
+                </h1>
+                <h2 class="text-center mb-3">
+                    Round {{ num_round}}. 
+                </h2>
+                <div class="setgame">
+                    <form action="{% url 'play' %}">
+                        <!-- Form Row 1 -->
+                        <div class="form-row">
+                            <div class="col-md-8 mb-3">
+                                <label class="sr-only">State</label>
+                                    <h3 class="text-center mb-3">The turn is for: {{ turn_name }}</h3>
+                                    <select name="state" class="form-control">
+                                        <option selected="true" disabled="disabled">Select Move: (Rock)</option>
+                                        {% for key,value in action_choices.items %}
+                                        <option value="{{ key }}">{{ value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn btn-secondary btn-block mt-4" type="submit">OK</button>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <h2 class="text-center mb-3">
+                                        SCORE
+                                    </h2>                                                                       
+                                    <div class="row py-2 text-secondary">
+                                        <div class="col-6">Round</div>
+                                        <div class="col-6">Winner</div>
+                                    </div>
+                                    {% for game_winner in games_list %}
+                                    <div class="row py-2 text-secondary">
+                                        <div class="col-6">{{ game_winner.0 }}</div>
+                                        <div class="col-6">{{ game_winner.1 }}</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
